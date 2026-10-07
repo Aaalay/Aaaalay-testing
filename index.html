@@ -637,7 +637,7 @@ body{font-variant-numeric:tabular-nums;-webkit-font-smoothing:antialiased;text-r
 .main{padding:20px 24px 72px;max-width:1600px;}
 
 /* ── Owner filter (light, floating under the header) ── */
-.owner-filter-bar{background:rgba(255,255,255,.95);backdrop-filter:blur(10px);border:1px solid var(--border);border-radius:12px;padding:9px 14px;top:114px;z-index:150;margin-bottom:16px;box-shadow:0 10px 24px -18px rgba(10,27,74,.45);max-height:92px;overflow-y:auto;}
+.owner-filter-bar{background:rgba(255,255,255,.95);backdrop-filter:blur(10px);border:1px solid var(--border);border-radius:12px;padding:9px 14px;top:122px;z-index:150;margin-bottom:16px;box-shadow:0 10px 24px -18px rgba(10,27,74,.45);max-height:92px;overflow-y:auto;}
 .owner-filter-label{color:var(--dim);}
 .owner-pill{font-size:11.5px;border:1px solid var(--border2);background:var(--surface);color:var(--muted);}
 .owner-pill:hover{border-color:var(--primary);color:var(--primary);}
@@ -832,6 +832,40 @@ button.nd-kpi:hover{box-shadow:0 8px 20px -12px rgba(10,27,74,.35),0 0 0 1px var
 .nd-settings-body select,.nd-settings-body input{width:100%;}
 
 
+/* ── Buttons and tabs: bold labels, brand gradient on the selected one ── */
+:root{--grad:linear-gradient(135deg,#1a3fb0 0%,#1e4bc8 45%,#3688eb 100%);--grad-soft:linear-gradient(180deg,#ffffff 0%,#e9f0ff 100%);--grad-shadow:0 6px 14px -6px rgba(30,75,200,.6);}
+.tb-group{font-size:14px;font-weight:700;color:#fff;background:rgba(255,255,255,.12);box-shadow:inset 0 0 0 1px rgba(255,255,255,.26);padding:9px 16px;}
+.tb-group:hover{background:rgba(255,255,255,.24);}
+.tb-group.active{background:var(--grad-soft);color:var(--brand-deep);font-weight:800;box-shadow:0 6px 16px -6px rgba(5,18,60,.65),inset 0 0 0 1px #fff;}
+.reload-btn{font-weight:800;background:var(--grad-soft);box-shadow:0 6px 16px -8px rgba(5,18,60,.6);}
+.nav{height:54px;align-items:center;}
+.nav-tabs{height:auto;gap:8px;padding:2px 0;align-items:center;}
+.nav-tab{height:36px;padding:0 16px;border-radius:9px;font-size:13.5px;font-weight:700;color:#24365f;background:#eef3fc;box-shadow:inset 0 0 0 1px #d5e0f5;transition:background .15s,color .15s,box-shadow .15s;}
+.nav-tab::after{display:none;}
+.nav-tab:hover{color:var(--brand);background:#e1ebff;box-shadow:inset 0 0 0 1px #b4c9f5;}
+.nav-tab.active{color:#fff;font-weight:800;background:var(--grad);box-shadow:var(--grad-shadow);}
+.nav-tab.active .nav-new{background:rgba(255,255,255,.22);color:#fff;border-color:rgba(255,255,255,.4);}
+.gdf-pill{font-weight:700;color:#24365f;border-color:#c5d3ec;}
+.gdf-pill.active,.sub-pill.active,.sub-pill.hot-sub.active,.sub-pill.warm-sub.active{background:var(--grad);border-color:transparent;color:#fff;font-weight:800;box-shadow:var(--grad-shadow);}
+.sub-pill{font-weight:700;color:#24365f;}
+.gdf-clear{font-weight:800;color:#24365f;border-color:#c5d3ec;background:var(--surface);}
+.gdf-count{font-weight:700;color:#24365f;}
+.nd-btn{font-weight:700;border-color:#c5d3ec;}
+.nd-btn.primary{background:var(--grad);border-color:transparent;box-shadow:var(--grad-shadow);}
+.nd-btn.primary:hover{background:var(--grad);filter:brightness(1.08);color:#fff;}
+.nd-seg button{font-weight:700;color:#24365f;}
+.nd-seg button.on{background:var(--grad);color:#fff;font-weight:800;box-shadow:var(--grad-shadow);}
+.nd-seg button.on b{background:rgba(255,255,255,.24);color:#fff;}
+.nd-mini button{font-weight:700;color:#24365f;}
+.nd-mini button.on{background:var(--grad);color:#fff;box-shadow:none;}
+.nd-ms > button{font-weight:700;}
+.scroll-top{background:var(--grad);}
+.mkt-group-btn,.ac-section-btn{font-size:12.5px!important;}
+.mkt-period-btn{font-size:11.5px!important;}
+.nm-bk-note{margin:-8px 0 18px;padding:10px 14px;border-radius:10px;background:var(--primary-soft);border:1px solid var(--blue-border);font-size:12px;line-height:1.55;color:#24365f;}
+.nm-bk-note b{color:var(--text);}
+.nm-bk-note.warn{background:var(--amber-bg);border-color:var(--amber-border);color:var(--amber);}
+
 /* ── Site visit outcomes (shared panel) ── */
 .vf-tiles{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:1px;background:var(--border);border-bottom:1px solid var(--border);}
 .vf-tile{background:var(--surface);padding:16px 18px 15px;}
@@ -868,8 +902,8 @@ button.nd-kpi:hover{box-shadow:0 8px 20px -12px rgba(10,27,74,.35),0 0 0 1px var
   .tb-groups{margin-left:0;}
   .tb-group{padding:7px 11px;font-size:13px;}
   .reload-btn{padding:8px 10px;}
-  .nav{padding:0 8px;height:44px;}
-  .nav-tab{padding:0 11px;}
+  .nav{padding:0 8px;height:50px;}
+  .nav-tab{padding:0 12px;height:34px;}
   .owner-filter-bar{position:static;}
   .verdict-strip{padding:8px 14px;}
   .main{padding:14px 14px 60px;}
@@ -945,10 +979,10 @@ button.nd-kpi:hover{box-shadow:0 8px 20px -12px rgba(10,27,74,.35),0 0 0 1px var
         <span>CRM dashboard<small>Hostels · AY 2026-27</small></span>
       </button>
       <div class="tb-groups" id="navGroups" role="tablist" aria-label="Dashboard sections">
+        <button class="tb-group" type="button" data-group="nonmit"    onclick="showGroup('nonmit')">Non-MIT Lead Analysis</button>
         <button class="tb-group active" type="button" data-group="pipeline"  onclick="showGroup('pipeline')">Pipeline</button>
         <button class="tb-group" type="button" data-group="team"      onclick="showGroup('team')">Follow-up and team</button>
         <button class="tb-group" type="button" data-group="marketing" onclick="showGroup('marketing')">Marketing and sources</button>
-        <button class="tb-group" type="button" data-group="nonmit"    onclick="showGroup('nonmit')">Non-MIT</button>
       </div>
       <div class="nav-right">
         <div class="file-pill" id="filePill"><div class="live-dot"></div><span id="navFilename">—</span></div>
@@ -956,6 +990,10 @@ button.nd-kpi:hover{box-shadow:0 8px 20px -12px rgba(10,27,74,.35),0 0 0 1px var
       </div>
     </div>
     <nav class="nav" aria-label="Pages in this section">
+      <div class="nav-tabs" data-group="nonmit" hidden>
+        <button class="nav-tab" data-tab="notmit" onclick="showTab('notmit',this)">Non-MIT Leads Analysis</button>
+        <button class="nav-tab" data-tab="nmdata" onclick="showTab('nmdata',this)">Non MIT Leads Data <span class="nav-new">New</span></button>
+      </div>
       <div class="nav-tabs" data-group="pipeline">
         <button class="nav-tab active" data-tab="overview" onclick="showTab('overview',this)">Funnel Overview</button>
         <button class="nav-tab" data-tab="hot" onclick="showTab('hot',this)">Hot Leads</button>
@@ -976,25 +1014,12 @@ button.nd-kpi:hover{box-shadow:0 8px 20px -12px rgba(10,27,74,.35),0 0 0 1px var
         <button class="nav-tab" data-tab="convcompare" onclick="showTab('convcompare',this)">Digital vs BTL Conversion</button>
         <button class="nav-tab" data-tab="geo" onclick="showTab('geo',this)">Geography</button>
       </div>
-      <div class="nav-tabs" data-group="nonmit" hidden>
-        <button class="nav-tab" data-tab="notmit" onclick="showTab('notmit',this)">Non-MIT Leads Analysis</button>
-        <button class="nav-tab" data-tab="nmdata" onclick="showTab('nmdata',this)">Non MIT Leads Data <span class="nav-new">New</span></button>
-      </div>
     </nav>
   </header>
 
   <div class="verdict-strip" id="verdictStrip">Loading…</div>
 
   <div class="main">
-
-    <!-- OWNER FILTER BAR — visible in all tabs -->
-    <div class="owner-filter-bar" id="ownerFilterBar" style="display:none;">
-      <span class="owner-filter-label">Lead Owner:</span>
-      <span class="owner-pill all-pill active" id="opill-all" onclick="applyOwnerFilter('all',this)">All Agents</span>
-      <div class="owner-filter-sep"></div>
-      <div id="ownerPillsContainer" style="display:flex;gap:6px;flex-wrap:wrap;align-items:center;"></div>
-      <span class="owner-count-pill" id="ownerCountLabel"></span>
-    </div>
 
     <!-- ════ TAB: NON MIT LEADS DATA (offline + digital lead sheet) ════ -->
     <div class="tab-content" id="tab-nmdata">
@@ -1225,6 +1250,7 @@ button.nd-kpi:hover{box-shadow:0 8px 20px -12px rgba(10,27,74,.35),0 0 0 1px var
 
       <!-- KPI STRIP -->
       <div class="kpi-grid" id="nm-kpis"></div>
+      <div class="nm-bk-note" id="nm-booking-note"></div>
 
       <div class="grid-2">
         <!-- LEAD QUALITY -->
@@ -1313,7 +1339,7 @@ button.nd-kpi:hover{box-shadow:0 8px 20px -12px rgba(10,27,74,.35),0 0 0 1px var
           <div><div class="panel-title">🎯 Source / Campaign — Full Breakdown</div><div class="panel-sub">Every Non-MIT source/campaign combination — lead count, stage split &amp; conversion. Helps management decide where to focus offline/BTL/agent-sourced spend.</div></div>
           <span class="panel-badge badge-gray" id="nm-source-badge">—</span>
         </div>
-        <div class="panel-body" style="padding:0;overflow-x:auto;"><table class="dt"><thead><tr><th>Source / Campaign</th><th>Channel</th><th class="tr">Leads</th><th class="tr">% Share</th><th class="tr">Hot</th><th class="tr">Warm</th><th class="tr">Booking/Payment (Payment - Non Mit)</th><th class="tr">Cold</th><th class="tr">Lost</th><th class="tr">Conv %</th></tr></thead><tbody id="nm-source-table"></tbody></table></div>
+        <div class="panel-body" style="padding:0;overflow-x:auto;"><table class="dt"><thead><tr><th>Source / Campaign</th><th>Channel</th><th class="tr">Leads</th><th class="tr">% Share</th><th class="tr">Hot</th><th class="tr">Warm</th><th class="tr">Booking/Payment (by Last Modified Date)</th><th class="tr">Cold</th><th class="tr">Lost</th><th class="tr">Conv %</th></tr></thead><tbody id="nm-source-table"></tbody></table></div>
       </div>
     </div>
 
@@ -1918,11 +1944,11 @@ button.nd-kpi:hover{box-shadow:0 8px 20px -12px rgba(10,27,74,.35),0 0 0 1px var
 
       <!-- ACTION PLAN SECTIONS FILTER TABS -->
       <div style="display:flex;gap:0;margin-bottom:16px;background:var(--surface);border:1px solid var(--border);border-radius:10px;overflow:hidden;box-shadow:var(--shadow);">
-        <button onclick="showActionSection('all',this)" id="acSec-all" class="ac-section-btn" style="flex:1;padding:11px 6px;border:none;border-bottom:3px solid #f59e0b;background:var(--surface2);color:var(--text);font-family:var(--mono);font-size:10px;font-weight:700;cursor:pointer;border-right:1px solid var(--border);">⚡ ALL</button>
-        <button onclick="showActionSection('followup',this)" id="acSec-followup" class="ac-section-btn" style="flex:1;padding:11px 6px;border:none;border-bottom:3px solid transparent;background:transparent;color:var(--muted);font-family:var(--mono);font-size:10px;font-weight:600;cursor:pointer;border-right:1px solid var(--border);">📞 FOLLOW-UP</button>
-        <button onclick="showActionSection('sales',this)" id="acSec-sales" class="ac-section-btn" style="flex:1;padding:11px 6px;border:none;border-bottom:3px solid transparent;background:transparent;color:var(--muted);font-family:var(--mono);font-size:10px;font-weight:600;cursor:pointer;border-right:1px solid var(--border);">💰 SALES</button>
-        <button onclick="showActionSection('recovery',this)" id="acSec-recovery" class="ac-section-btn" style="flex:1;padding:11px 6px;border:none;border-bottom:3px solid transparent;background:transparent;color:var(--muted);font-family:var(--mono);font-size:10px;font-weight:600;cursor:pointer;border-right:1px solid var(--border);">🔄 RECOVERY</button>
-        <button onclick="showActionSection('strategic',this)" id="acSec-strategic" class="ac-section-btn" style="flex:1;padding:11px 6px;border:none;border-bottom:3px solid transparent;background:transparent;color:var(--muted);font-family:var(--mono);font-size:10px;font-weight:600;cursor:pointer;">🎯 STRATEGIC</button>
+        <button onclick="showActionSection('all',this)" id="acSec-all" class="ac-section-btn" style="flex:1;padding:11px 6px;border:none;border-bottom:3px solid #1e4bc8;background:linear-gradient(180deg,#f7f9fd,#dfe9ff);color:#173a9c;font-family:var(--mono);font-size:10px;font-weight:800;cursor:pointer;border-right:1px solid var(--border);">⚡ ALL</button>
+        <button onclick="showActionSection('followup',this)" id="acSec-followup" class="ac-section-btn" style="flex:1;padding:11px 6px;border:none;border-bottom:3px solid transparent;background:transparent;color:#24365f;font-family:var(--mono);font-size:10px;font-weight:700;cursor:pointer;border-right:1px solid var(--border);">📞 FOLLOW-UP</button>
+        <button onclick="showActionSection('sales',this)" id="acSec-sales" class="ac-section-btn" style="flex:1;padding:11px 6px;border:none;border-bottom:3px solid transparent;background:transparent;color:#24365f;font-family:var(--mono);font-size:10px;font-weight:700;cursor:pointer;border-right:1px solid var(--border);">💰 SALES</button>
+        <button onclick="showActionSection('recovery',this)" id="acSec-recovery" class="ac-section-btn" style="flex:1;padding:11px 6px;border:none;border-bottom:3px solid transparent;background:transparent;color:#24365f;font-family:var(--mono);font-size:10px;font-weight:700;cursor:pointer;border-right:1px solid var(--border);">🔄 RECOVERY</button>
+        <button onclick="showActionSection('strategic',this)" id="acSec-strategic" class="ac-section-btn" style="flex:1;padding:11px 6px;border:none;border-bottom:3px solid transparent;background:transparent;color:#24365f;font-family:var(--mono);font-size:10px;font-weight:700;cursor:pointer;">🎯 STRATEGIC</button>
       </div>
 
       <!-- ACTION CARDS CONTAINER -->
@@ -2312,10 +2338,10 @@ button.nd-kpi:hover{box-shadow:0 8px 20px -12px rgba(10,27,74,.35),0 0 0 1px var
         </div>
         <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
           <div style="display:flex;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:8px;overflow:hidden;">
-            <button onclick="setMktPeriod('daily',this)"   class="mkt-period-btn" style="font-family:var(--mono);font-size:10px;font-weight:600;padding:7px 14px;border:none;background:transparent;color:rgba(255,255,255,0.4);cursor:pointer;letter-spacing:0.05em;">Daily</button>
-            <button onclick="setMktPeriod('weekly',this)"  class="mkt-period-btn" style="font-family:var(--mono);font-size:10px;font-weight:600;padding:7px 14px;border:none;background:transparent;color:rgba(255,255,255,0.4);cursor:pointer;letter-spacing:0.05em;">Weekly</button>
-            <button onclick="setMktPeriod('monthly',this)" class="mkt-period-btn" style="font-family:var(--mono);font-size:10px;font-weight:600;padding:7px 14px;border:none;background:transparent;color:rgba(255,255,255,0.4);cursor:pointer;letter-spacing:0.05em;">Monthly</button>
-            <button onclick="setMktPeriod('overall',this)" class="mkt-period-btn mkt-p-active" style="font-family:var(--mono);font-size:10px;font-weight:700;padding:7px 14px;border:none;background:#f59e0b;color:#0c1a3d;cursor:pointer;letter-spacing:0.05em;">Overall</button>
+            <button onclick="setMktPeriod('daily',this)"   class="mkt-period-btn" style="font-family:var(--mono);font-size:10px;font-weight:700;padding:7px 14px;border:none;background:transparent;color:rgba(255,255,255,0.78);cursor:pointer;letter-spacing:0.05em;">Daily</button>
+            <button onclick="setMktPeriod('weekly',this)"  class="mkt-period-btn" style="font-family:var(--mono);font-size:10px;font-weight:700;padding:7px 14px;border:none;background:transparent;color:rgba(255,255,255,0.78);cursor:pointer;letter-spacing:0.05em;">Weekly</button>
+            <button onclick="setMktPeriod('monthly',this)" class="mkt-period-btn" style="font-family:var(--mono);font-size:10px;font-weight:700;padding:7px 14px;border:none;background:transparent;color:rgba(255,255,255,0.78);cursor:pointer;letter-spacing:0.05em;">Monthly</button>
+            <button onclick="setMktPeriod('overall',this)" class="mkt-period-btn mkt-p-active" style="font-family:var(--mono);font-size:10px;font-weight:800;padding:7px 14px;border:none;background:linear-gradient(180deg,#ffffff,#dfe9ff);color:#173a9c;cursor:pointer;letter-spacing:0.05em;">Overall</button>
           </div>
           <span id="mkt-period-label" style="font-family:var(--mono);font-size:11px;color:rgba(255,255,255,0.3);padding:6px 12px;background:rgba(255,255,255,0.05);border-radius:6px;border:1px solid rgba(255,255,255,0.08);">— leads</span>
         </div>
@@ -2323,16 +2349,16 @@ button.nd-kpi:hover{box-shadow:0 8px 20px -12px rgba(10,27,74,.35),0 0 0 1px var
 
       <!-- ── GROUP FILTER TABS ── -->
       <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-bottom:16px;background:var(--surface);border:1px solid var(--border);border-radius:10px;overflow:hidden;box-shadow:var(--shadow);">
-        <button onclick="setMktGroup('overall',this)" id="mktG-overall" class="mkt-group-btn" style="padding:14px 10px;border:none;border-right:1px solid var(--border);border-bottom:3px solid #f59e0b;background:var(--surface2);color:var(--text);font-family:var(--mono);font-size:11px;font-weight:700;cursor:pointer;transition:all 0.15s;">
+        <button onclick="setMktGroup('overall',this)" id="mktG-overall" class="mkt-group-btn" style="padding:14px 10px;border:none;border-right:1px solid var(--border);border-bottom:3px solid #1e4bc8;background:linear-gradient(180deg,#f7f9fd,#dfe9ff);color:#173a9c;font-family:var(--mono);font-size:11px;font-weight:800;cursor:pointer;transition:all 0.15s;">
           🌐 Overall Leads &nbsp;<span id="mktG-overall-cnt" style="color:#f59e0b;font-size:14px;font-weight:800;">—</span>
         </button>
-        <button onclick="setMktGroup('digital',this)" id="mktG-digital" class="mkt-group-btn" style="padding:14px 10px;border:none;border-right:1px solid var(--border);border-bottom:3px solid transparent;background:transparent;color:var(--muted);font-family:var(--mono);font-size:11px;font-weight:600;cursor:pointer;transition:all 0.15s;">
+        <button onclick="setMktGroup('digital',this)" id="mktG-digital" class="mkt-group-btn" style="padding:14px 10px;border:none;border-right:1px solid var(--border);border-bottom:3px solid transparent;background:transparent;color:#24365f;font-family:var(--mono);font-size:11px;font-weight:700;cursor:pointer;transition:all 0.15s;">
           📱 Digital &nbsp;<span id="mktG-digital-cnt" style="color:var(--blue);font-size:14px;font-weight:800;">—</span>
         </button>
-        <button onclick="setMktGroup('btl',this)" id="mktG-btl" class="mkt-group-btn" style="padding:14px 10px;border:none;border-right:1px solid var(--border);border-bottom:3px solid transparent;background:transparent;color:var(--muted);font-family:var(--mono);font-size:11px;font-weight:600;cursor:pointer;transition:all 0.15s;">
+        <button onclick="setMktGroup('btl',this)" id="mktG-btl" class="mkt-group-btn" style="padding:14px 10px;border:none;border-right:1px solid var(--border);border-bottom:3px solid transparent;background:transparent;color:#24365f;font-family:var(--mono);font-size:11px;font-weight:700;cursor:pointer;transition:all 0.15s;">
           📍 BTL &nbsp;<span id="mktG-btl-cnt" style="color:var(--amber);font-size:14px;font-weight:800;">—</span>
         </button>
-        <button onclick="setMktGroup('other',this)" id="mktG-other" class="mkt-group-btn" style="padding:14px 10px;border:none;border-bottom:3px solid transparent;background:transparent;color:var(--muted);font-family:var(--mono);font-size:11px;font-weight:600;cursor:pointer;transition:all 0.15s;">
+        <button onclick="setMktGroup('other',this)" id="mktG-other" class="mkt-group-btn" style="padding:14px 10px;border:none;border-bottom:3px solid transparent;background:transparent;color:#24365f;font-family:var(--mono);font-size:11px;font-weight:700;cursor:pointer;transition:all 0.15s;">
           📦 Other &nbsp;<span id="mktG-other-cnt" style="color:var(--muted);font-size:14px;font-weight:800;">—</span>
         </button>
       </div>
@@ -3102,7 +3128,7 @@ function buildOwnerFilter() {
   container.innerHTML = sorted.map(([o,n]) =>
     `<span class="owner-pill" id="opill-${o.replace(/\s/g,'_')}" onclick="applyOwnerFilter('${o}',this)">${o} <span style="opacity:0.6;">(${n})</span></span>`
   ).join('');
-  document.getElementById('ownerFilterBar').style.display = 'flex';
+  { const ofb = document.getElementById('ownerFilterBar'); if (ofb) ofb.style.display = 'flex'; }
   updateOwnerCountLabel();
 }
 
@@ -3112,7 +3138,7 @@ function applyOwnerFilter(owner, el) {
   // reset sub filters too
   activeHotSub = 'all';
   activeWarmSub = 'all';
-  el.classList.add('active');
+  if (el) el.classList.add('active');
   updateOwnerCountLabel();
   // Recompute and re-render
   const filtered = getFilteredRows();
@@ -3786,7 +3812,7 @@ function renderDashboard(m, filename) {
   }).length;
   document.getElementById('overviewLabel').textContent = `Funnel Overview · ${instTotal.toLocaleString()} Total Leads · As of Today`;
 
-  document.getElementById('ownerFilterBar').style.display = 'flex';
+  { const ofb = document.getElementById('ownerFilterBar'); if (ofb) ofb.style.display = 'flex'; }
   updateOwnerCountLabel();
   // Reset all date filters to "All Time" on every fresh load
   gdfResetAll();
@@ -4363,13 +4389,13 @@ function showActionSection(sec, el) {
   document.querySelectorAll('.ac-section-btn').forEach(b => {
     b.style.borderBottomColor = 'transparent';
     b.style.background = 'transparent';
-    b.style.color = 'var(--muted)';
-    b.style.fontWeight = '600';
+    b.style.color = '#24365f';
+    b.style.fontWeight = '700';
   });
-  el.style.borderBottomColor = '#f59e0b';
-  el.style.background = 'var(--surface2)';
-  el.style.color = 'var(--text)';
-  el.style.fontWeight = '700';
+  el.style.borderBottomColor = '#1e4bc8';
+  el.style.background = 'linear-gradient(180deg,#f7f9fd,#dfe9ff)';
+  el.style.color = '#173a9c';
+  el.style.fontWeight = '800';
   if (!globalMetrics) return;
   _renderActionCards(globalMetrics);
 }
@@ -6882,9 +6908,9 @@ let _mktGroup  = 'overall';
 function setMktPeriod(period, btn) {
   _mktPeriod = period;
   document.querySelectorAll('.mkt-period-btn').forEach(b => {
-    b.style.background='transparent'; b.style.color='rgba(255,255,255,0.4)'; b.style.fontWeight='600';
+    b.style.background='transparent'; b.style.color='rgba(255,255,255,0.78)'; b.style.fontWeight='700';
   });
-  if (btn) { btn.style.background='#f59e0b'; btn.style.color='#0c1a3d'; btn.style.fontWeight='700'; }
+  if (btn) { btn.style.background='linear-gradient(180deg,#ffffff,#dfe9ff)'; btn.style.color='#173a9c'; btn.style.fontWeight='800'; }
   renderMarketingTab();
 }
 
@@ -6895,14 +6921,14 @@ function setMktGroup(group, btn) {
     if (!b) return;
     b.style.borderBottom = '3px solid transparent';
     b.style.background   = 'transparent';
-    b.style.color        = 'var(--muted)';
-    b.style.fontWeight   = '600';
+    b.style.color        = '#24365f';
+    b.style.fontWeight   = '700';
   });
   if (btn) {
-    btn.style.borderBottom = '3px solid #f59e0b';
-    btn.style.background   = 'var(--surface2)';
-    btn.style.color        = 'var(--text)';
-    btn.style.fontWeight   = '700';
+    btn.style.borderBottom = '3px solid #1e4bc8';
+    btn.style.background   = 'linear-gradient(180deg,#f7f9fd,#dfe9ff)';
+    btn.style.color        = '#173a9c';
+    btn.style.fontWeight   = '800';
   }
   // Show occupancy section only for Digital Marketing
   const occSection = document.getElementById('mkt-occ-section');
@@ -8353,9 +8379,8 @@ function nmBaseRows() {
 }
 
 // Apply date preset (on top of the Aug-2026 floor already in nmBaseRows), agent & source filters
-function nmGetRows() {
-  let rows = nmBaseRows();
-
+// Selected date range of the Non-MIT tab ({from:null,to:null} = whole period since the floor date)
+function nmRange() {
   // Date preset
   const today = new Date(); today.setHours(0,0,0,0);
   let from = null, to = null;
@@ -8371,6 +8396,51 @@ function nmGetRows() {
     if (nmState.from) { from = new Date(nmState.from); from.setHours(0,0,0,0); }
     if (nmState.to)   { to   = new Date(nmState.to);   to.setHours(23,59,59,999); }
   }
+  return { from, to };
+}
+
+// ── Booking / Payment by Last Modified Date ─────────────────────────────────
+// A booking belongs to the period in which the lead was last modified (that is
+// when it was moved to "Payment - Non Mit"), not the period it registered in.
+// So a date filter also counts bookings from leads that registered earlier.
+let _nmModCol;   // header of the Last Modified Date column (null when the sheet has none)
+function nmModCol() {
+  if (_nmModCol !== undefined && rawRows.length && _nmModCol !== null && _nmModCol in rawRows[0]) return _nmModCol;
+  const keys = rawRows.length ? Object.keys(rawRows[0]) : [];
+  _nmModCol = keys.find(k => /^last modified date$/i.test(k.replace(/^﻿/, '').replace(/\s+/g, ' ').trim())) || null;
+  return _nmModCol;
+}
+function nmBookingDate(r) {
+  const k = nmModCol();
+  let d = k ? (parseRegDate(r[k] || '') || parseDateFlexible(r[k] || '')) : null;
+  if (!d) d = parseRegDate(r['User Registration Date'] || '');   // fallback when the cell is empty
+  return d;
+}
+function nmBookingMonthKey(r) {
+  const d = nmBookingDate(r);
+  return d ? `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}` : null;
+}
+// Bookings for the selected period: Non-MIT sources, Lead Stage = Payment - Non Mit,
+// Last Modified Date inside the range (from 1 Aug 2026 when no range is picked),
+// with the same agent / source / channel filters as the leads.
+function nmBookingRows() {
+  const { from, to } = nmRange();
+  const lo = from && from > NM_FLOOR_DATE ? from : NM_FLOOR_DATE;
+  return (rawRows || []).filter(r => {
+    if (!nmIsBooking(r) || !nmIsNotMit(r)) return false;
+    const d = nmBookingDate(r);
+    if (!d || d < lo || (to && d > to)) return false;
+    if (nmState.agent !== 'all' && nmAgentOf(r) !== nmState.agent) return false;
+    if (nmState.source !== 'all' && nmGetCampaign(r) !== nmState.source) return false;
+    if (nmState.channel && nmState.channel !== 'all' && mktGroup(r) !== nmState.channel) return false;
+    return true;
+  });
+}
+let nmBk = [];   // bookings of the current view, set by nmRenderAll()
+
+function nmGetRows() {
+  let rows = nmBaseRows();
+  const { from, to } = nmRange();
   if (from || to) {
     rows = rows.filter(r => {
       const d = parseRegDate(r['User Registration Date'] || '');
@@ -8447,6 +8517,8 @@ function nmRenderAll() {
   nmPopulateFilterOptions();
   const rows = nmGetRows();
   const m = calculateMetrics(rows);
+  nmBk = nmBookingRows();
+  nmRenderBookingNote(rows);
 
   const badge = document.getElementById('nm-count-badge');
   if (badge) badge.textContent = `· ${rows.length.toLocaleString()} leads`;
@@ -8477,6 +8549,20 @@ function nmRenderAll() {
   });
 }
 
+function nmRenderBookingNote(rows) {
+  const el = document.getElementById('nm-booking-note'); if (!el) return;
+  if (!nmModCol()) {
+    el.className = 'nm-bk-note warn';
+    el.innerHTML = 'The sheet has no <b>Last Modified Date</b> column, so Booking / Payment is counted by User Registration Date for now.';
+    return;
+  }
+  const inView = new Set(rows), older = nmBk.filter(r => !inView.has(r)).length;
+  el.className = 'nm-bk-note';
+  el.innerHTML = `<b>Booking / Payment is counted by Last Modified Date.</b> ${nmBk.length.toLocaleString()} booking${nmBk.length===1?'':'s'} fall in this period`
+    + (older ? `, <b>${older.toLocaleString()}</b> of them from leads registered before it` : '')
+    + `. Conversion % = bookings in the period ÷ leads registered in the period.`;
+}
+
 function nmPopulateFilterOptions() {
   const base = nmBaseRows();
   // Agents
@@ -8505,7 +8591,7 @@ function nmRenderKpis(m, rows) {
   const el = document.getElementById('nm-kpis');
   if (!el) return;
   const total = rows.length;
-  const bookings = rows.filter(nmIsBooking).length; // Lead Stage = "Payment - Non Mit"
+  const bookings = nmBk.length; // Lead Stage = "Payment - Non Mit", by Last Modified Date
   const conv = total>0 ? (bookings/total*100).toFixed(1) : '0.0';
   const leakage = m.lost.length + m.notResponding.length + m.cold.length;
   const leakagePct = total>0 ? (leakage/total*100).toFixed(1) : '0.0';
@@ -8513,8 +8599,8 @@ function nmRenderKpis(m, rows) {
     { tag:'Total Non-MIT Leads', val:total.toLocaleString(), sub:'Since Aug 2026 · whitelist sources', color:'blue' },
     { tag:'Hot Leads',   val:m.hot.length,     sub:'Active, high-priority', color:'green' },
     { tag:'Warm Leads',  val:m.warm.length,    sub:'Decision pending',       color:'amber' },
-    { tag:'Booking / Payment', val:bookings,   sub:'Lead Stage = Payment - Non Mit', color:'purple' },
-    { tag:'Conversion %',val:conv+'%',         sub:'Booking ÷ total leads', color:parseFloat(conv)>=10?'green':parseFloat(conv)>=5?'amber':'red' },
+    { tag:'Booking / Payment', val:bookings,   sub:'Payment - Non Mit · by Last Modified Date', color:'purple' },
+    { tag:'Conversion %',val:conv+'%',         sub:'Bookings in period ÷ leads registered', color:parseFloat(conv)>=10?'green':parseFloat(conv)>=5?'amber':'red' },
     { tag:'Cold Leads',  val:m.cold.length,    sub:'Needs re-engagement',    color:'blue' },
     { tag:'Not Responding', val:m.notResponding.length, sub:'No contact yet', color:'amber' },
     { tag:'Leakage %',   val:leakagePct+'%',   sub:`${leakage} cold+lost+NR`, color:parseFloat(leakagePct)>40?'red':parseFloat(leakagePct)>20?'amber':'green' },
@@ -8531,11 +8617,11 @@ function nmRenderQuality(m, rows) {
   const tbody = document.getElementById('nm-quality');
   if (!tbody) return;
   const total = rows.length || 1;
-  const paymentNonMit = rows.filter(nmIsBooking).length; // Lead Stage = "Payment - Non Mit"
+  const paymentNonMit = nmBk.length; // by Last Modified Date
   const stages = [
     { label:'🔥 Hot Lead', n:m.hot.length, cls:'c-g' },
     { label:'🟡 Warm Lead - Decision Pending', n:m.warm.length, cls:'c-a' },
-    { label:'💳 Payment - Non Mit (Booking)', n:paymentNonMit, cls:'c-p' },
+    { label:'💳 Payment - Non Mit (Booking, by Last Modified Date)', n:paymentNonMit, cls:'c-p' },
     { label:'🧊 Cold Lead', n:m.cold.length, cls:'c-b' },
     { label:'🔕 Not Responding', n:m.notResponding.length, cls:'c-m' },
     { label:'❌ Lost', n:m.lost.length, cls:'c-r' },
@@ -8568,11 +8654,16 @@ function nmRenderMonthOverall(rows) {
     else if (stage==='Cold Lead') map[k].cold++;
     else if (stage==='Not Responding') map[k].nr++;
     else if (stage==='Lost') map[k].lost++;
-    if (nmIsBooking(r)) map[k].booking++; // Lead Stage = "Payment - Non Mit"
+  });
+  // bookings land in the month of their Last Modified Date
+  nmBk.forEach(r => {
+    const k = nmBookingMonthKey(r); if (!k) return;
+    if (!map[k]) map[k] = { total:0, hot:0, warm:0, cold:0, nr:0, lost:0, booking:0 };
+    map[k].booking++;
   });
   const keys = Object.keys(map).sort();
   if (badge) badge.textContent = `${keys.length} month${keys.length===1?'':'s'}`;
-  const header = `<tr><th>Month</th><th class="tr">Total</th><th class="tr">Hot</th><th class="tr">Warm</th><th class="tr">Cold</th><th class="tr">Not Resp.</th><th class="tr">Lost</th><th class="tr">Booking/Payment (Payment - Non Mit)</th><th class="tr">Conv %</th></tr>`;
+  const header = `<tr><th>Month</th><th class="tr">Total</th><th class="tr">Hot</th><th class="tr">Warm</th><th class="tr">Cold</th><th class="tr">Not Resp.</th><th class="tr">Lost</th><th class="tr">Booking/Payment (by Last Modified Date)</th><th class="tr">Conv %</th></tr>`;
   const bodyRows = keys.map(k => {
     const d = map[k];
     const conv = d.total>0 ? (d.booking/d.total*100).toFixed(1) : '0.0';
@@ -8580,7 +8671,7 @@ function nmRenderMonthOverall(rows) {
       <td class="tr tm">${d.total}</td><td class="tr tm c-g">${d.hot}</td><td class="tr tm c-a">${d.warm}</td>
       <td class="tr tm c-b">${d.cold}</td><td class="tr tm c-m">${d.nr}</td>
       <td class="tr tm c-r">${d.lost}</td><td class="tr tm fw6 c-p">${d.booking}</td>
-      <td class="tr tm fw6" style="color:${parseFloat(conv)>=10?'var(--green)':parseFloat(conv)>=5?'var(--amber)':'var(--red)'};">${conv}%</td></tr>`;
+      <td class="tr tm fw6" style="color:${parseFloat(conv)>=10?'var(--green)':parseFloat(conv)>=5?'var(--amber)':'var(--red)'};">${d.total>0?conv+'%':'–'}</td></tr>`;
   }).join('');
   const tGrand = Object.values(map).reduce((s,d)=>({total:s.total+d.total,hot:s.hot+d.hot,warm:s.warm+d.warm,cold:s.cold+d.cold,nr:s.nr+d.nr,lost:s.lost+d.lost,booking:s.booking+d.booking}),{total:0,hot:0,warm:0,cold:0,nr:0,lost:0,booking:0});
   const tConv = tGrand.total>0 ? (tGrand.booking/tGrand.total*100).toFixed(1) : '0.0';
@@ -8607,17 +8698,21 @@ function nmRenderAgentPerf(rows) {
     else if (stage==='Not Responding') map[ag].nr++;
     else if (stage==='Lost') map[ag].lost++;
     else if (stage==='Untouched') map[ag].untouched++;
-    if (nmIsBooking(r)) map[ag].booking++; // Lead Stage = "Payment - Non Mit"
+  });
+  nmBk.forEach(r => {   // bookings by Last Modified Date
+    const ag = nmAgentOf(r);
+    if (!map[ag]) map[ag] = { agent:ag, total:0, hot:0, warm:0, cold:0, nr:0, lost:0, untouched:0, booking:0 };
+    map[ag].booking++;
   });
   const agents = Object.values(map).map(a => ({...a, conv: a.total>0?(a.booking/a.total*100):0, leakage: a.cold+a.nr+a.lost})).sort((a,b)=>b.total-a.total);
   if (badge) badge.textContent = `${agents.length} agent${agents.length===1?'':'s'}`;
   if (!tbody) return agents;
-  const header = `<tr><th>Agent</th><th class="tr">Total</th><th class="tr">Hot</th><th class="tr">Warm</th><th class="tr">Cold</th><th class="tr">Not Resp.</th><th class="tr">Lost</th><th class="tr">Untouched</th><th class="tr">Booking/Payment (Payment - Non Mit)</th><th class="tr">Conv %</th></tr>`;
+  const header = `<tr><th>Agent</th><th class="tr">Total</th><th class="tr">Hot</th><th class="tr">Warm</th><th class="tr">Cold</th><th class="tr">Not Resp.</th><th class="tr">Lost</th><th class="tr">Untouched</th><th class="tr">Booking/Payment (by Last Modified Date)</th><th class="tr">Conv %</th></tr>`;
   const bodyRows = agents.map(a => `<tr><td class="fw6">${a.agent}</td>
       <td class="tr tm">${a.total}</td><td class="tr tm c-g">${a.hot}</td><td class="tr tm c-a">${a.warm}</td>
       <td class="tr tm c-b">${a.cold}</td><td class="tr tm c-m">${a.nr}</td>
       <td class="tr tm c-r">${a.lost}</td><td class="tr tm c-m">${a.untouched}</td><td class="tr tm fw6 c-p">${a.booking}</td>
-      <td class="tr tm fw6" style="color:${a.conv>=10?'var(--green)':a.conv>=5?'var(--amber)':'var(--red)'};">${a.conv.toFixed(1)}%</td></tr>`).join('');
+      <td class="tr tm fw6" style="color:${a.conv>=10?'var(--green)':a.conv>=5?'var(--amber)':'var(--red)'};">${a.total>0?a.conv.toFixed(1)+'%':'–'}</td></tr>`).join('');
   tbody.innerHTML = header + (bodyRows || `<tr><td colspan="10" style="padding:16px;color:var(--muted);">No leads in this range.</td></tr>`);
   return agents;
 }
@@ -8758,7 +8853,11 @@ function nmRenderSourceTable(rows) {
     else if (stage==='Warm Lead - Decision Pending') map[s].warm++;
     else if (stage==='Cold Lead') map[s].cold++;
     else if (stage==='Lost') map[s].lost++;
-    if (nmIsBooking(r)) map[s].booking++;
+  });
+  nmBk.forEach(r => {   // bookings by Last Modified Date
+    const s = nmGetCampaign(r);
+    if (!map[s]) map[s] = { total:0, hot:0, warm:0, booking:0, cold:0, lost:0, channel: mktGroup(r) };
+    map[s].booking++;
   });
   const total = rows.length || 1;
   const sorted = Object.entries(map).sort((a,b)=>b[1].total-a[1].total);
@@ -8772,7 +8871,7 @@ function nmRenderSourceTable(rows) {
       <td class="tr tm fw6">${d.total}</td><td class="tr tm">${pct}%</td>
       <td class="tr tm c-g">${d.hot}</td><td class="tr tm c-a">${d.warm}</td>
       <td class="tr tm fw6">${d.booking}</td><td class="tr tm c-b">${d.cold}</td><td class="tr tm c-r">${d.lost}</td>
-      <td class="tr tm fw6" style="color:${parseFloat(conv)>=10?'var(--green)':parseFloat(conv)>=5?'var(--amber)':'var(--red)'};">${conv}%</td></tr>`;
+      <td class="tr tm fw6" style="color:${parseFloat(conv)>=10?'var(--green)':parseFloat(conv)>=5?'var(--amber)':'var(--red)'};">${d.total>0?conv+'%':'–'}</td></tr>`;
   }).join('') || `<tr><td colspan="10" style="padding:16px;color:var(--muted);">No leads in this range.</td></tr>`;
 }
 
@@ -8796,8 +8895,8 @@ function nmRenderChannelTable(rows) {
     else if (stage==='Cold Lead') g.cold++;
     else if (stage==='Lost') g.lost++;
     else if (/not respond/i.test(stage)) g.nr++;
-    if (nmIsBooking(r)) g.booking++;
   });
+  nmBk.forEach(r => { (map[mktGroup(r)] || map.other).booking++; });   // bookings by Last Modified Date
   const total = rows.length || 1;
   const convCol = c => c>=10?'var(--green)':c>=5?'var(--amber)':'var(--red)';
   let best = null;
@@ -8813,7 +8912,7 @@ function nmRenderChannelTable(rows) {
       <td class="tr tm" style="color:var(--muted);">${d.nr}</td>
       <td class="tr tm fw6" style="color:${convCol(conv)};">${conv.toFixed(1)}%</td></tr>`;
   }).join('');
-  const tb = rows.filter(nmIsBooking).length;
+  const tb = nmBk.length;
   const tconv = rows.length ? tb/rows.length*100 : 0;
   tbody.innerHTML = body + `<tr style="border-top:2px solid var(--border);font-weight:700;"><td>Total</td>
     <td class="tr tm">${new Set(rows.map(nmGetCampaign)).size}</td>
