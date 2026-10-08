@@ -682,6 +682,7 @@ body{font-variant-numeric:tabular-nums;-webkit-font-smoothing:antialiased;text-r
 .sub-pill:hover{border-color:var(--primary);}
 
 /* The Non MIT Leads Data tab has its own dataset and filters */
+body[data-tab="nmdata"] #campFilter,
 body[data-tab="nmdata"] #ownerFilterBar,
 body[data-tab="nmdata"] #verdictStrip{display:none!important;}
 
@@ -891,6 +892,59 @@ button.nd-kpi:hover{box-shadow:0 8px 20px -12px rgba(10,27,74,.35),0 0 0 1px var
 @media(max-width:1250px){.vf-tiles{grid-template-columns:repeat(3,minmax(0,1fr));}}
 @media(max-width:700px){.vf-tiles{grid-template-columns:repeat(2,minmax(0,1fr));}.vf-tile:first-child{grid-column:span 2;}}
 
+
+/* ── Primary Registration Campaign filter (header, every tab) ── */
+.nav{gap:12px;}
+.nav-tabs{flex:1 1 auto;min-width:0;}
+.camp-filter{position:relative;flex-shrink:0;display:flex;align-items:center;}
+.camp-btn{display:inline-flex;align-items:center;gap:8px;height:36px;max-width:560px;padding:0 34px 0 14px;border-radius:9px;border:0;font-family:var(--body);font-size:13px;font-weight:700;color:#24365f;background:#eef3fc;box-shadow:inset 0 0 0 1px #c5d3ec;position:relative;white-space:nowrap;transition:background .15s,box-shadow .15s;}
+.camp-btn::after{content:'';position:absolute;right:14px;top:50%;width:7px;height:7px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:translateY(-70%) rotate(45deg);}
+.camp-btn:hover{background:#e1ebff;box-shadow:inset 0 0 0 1px #9fb8ee;}
+.camp-btn .camp-lbl{font-weight:600;color:var(--muted);}
+.camp-btn .camp-lbl-s{display:none;font-weight:600;color:var(--muted);}
+.camp-btn b{font-weight:800;overflow:hidden;text-overflow:ellipsis;min-width:0;max-width:240px;}
+.camp-btn .camp-n{font-size:11px;font-weight:800;padding:2px 8px;border-radius:20px;background:#fff;color:var(--brand);}
+.camp-filter.on .camp-btn{background:var(--grad);color:#fff;box-shadow:var(--grad-shadow);}
+.camp-filter.on .camp-btn .camp-lbl,.camp-filter.on .camp-btn .camp-lbl-s{color:rgba(255,255,255,.82);}
+.camp-x{display:none;margin-left:6px;width:30px;height:30px;border-radius:8px;border:0;background:#fdf1f0;color:var(--red);font-size:17px;font-weight:700;line-height:1;}
+.camp-x:hover{background:#fbdcd8;}
+.camp-filter.on .camp-x{display:inline-block;}
+.camp-pop{display:none;position:absolute;right:0;top:calc(100% + 8px);width:400px;max-width:calc(100vw - 24px);background:var(--surface);border-radius:14px;box-shadow:0 24px 50px -18px rgba(10,27,74,.45),0 0 0 1px var(--border2);z-index:400;padding:14px;}
+.camp-filter.open .camp-pop{display:block;}
+.camp-pop-h{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:10px;}
+.camp-pop-h b{font-size:14px;font-weight:800;color:var(--text);}
+.camp-pop-h span{font-size:11.5px;color:var(--muted);}
+.camp-pop input[type=search]{width:100%;font-size:13px;padding:8px 11px;}
+.camp-quick{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 8px;}
+.camp-quick span{font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--dim);align-self:center;margin-right:2px;}
+.camp-quick button{font-family:var(--body);font-size:11.5px;font-weight:700;padding:5px 10px;border-radius:20px;border:1px solid #c5d3ec;background:var(--surface);color:#24365f;}
+.camp-quick button:hover{border-color:var(--brand);color:var(--brand);background:var(--primary-soft);}
+.camp-quick button em{font-style:normal;font-weight:600;color:var(--dim);margin-left:3px;}
+.camp-list{max-height:300px;overflow-y:auto;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin:0 -14px;padding:4px 6px;}
+.camp-list label{display:grid;grid-template-columns:auto 1fr auto auto;gap:9px;align-items:center;padding:7px 8px;border-radius:8px;font-size:12.5px;cursor:pointer;}
+.camp-list label:hover{background:var(--surface2);}
+.camp-list label.chk{background:var(--primary-soft);}
+.camp-list input{accent-color:var(--brand);width:15px;height:15px;}
+.camp-list label span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--text);font-weight:500;}
+.camp-list label i{font-style:normal;font-size:10px;font-weight:700;padding:1px 7px;border-radius:20px;background:var(--surface2);color:var(--muted);}
+.camp-list label i.g-digital{background:var(--blue-bg);color:var(--blue);}
+.camp-list label i.g-btl{background:var(--amber-bg);color:var(--amber);}
+.camp-list label em{font-style:normal;font-size:11.5px;font-weight:700;color:var(--muted);min-width:38px;text-align:right;}
+.camp-empty{padding:18px 8px;text-align:center;color:var(--muted);font-size:12.5px;}
+.camp-foot{display:flex;align-items:center;gap:10px;padding-top:12px;}
+.camp-foot span{flex:1;font-size:11.5px;color:var(--muted);text-align:center;}
+.camp-foot span b{color:var(--text);}
+.nd-ms > button:disabled{opacity:.55;cursor:not-allowed;}
+@media(max-width:1180px){.camp-btn .camp-lbl{display:none;}.camp-btn .camp-lbl-s{display:inline;}}
+@media(max-width:820px){
+  .nav{height:auto;flex-wrap:wrap;padding:6px 8px;gap:6px;}
+  .nav-tabs{flex:1 1 100%;order:2;height:40px;}
+  .camp-filter{flex:1 1 100%;order:1;}
+  .camp-btn{flex:1;max-width:none;}
+  .camp-pop{position:fixed;left:12px;right:12px;top:118px;width:auto;max-width:none;max-height:calc(100vh - 136px);overflow-y:auto;}
+  .camp-list{max-height:none;}
+}
+
 /* ── Responsive ── */
 @media(max-width:1280px){.nd-row.r3{grid-template-columns:1fr 1fr;}.nd-row.r3 > :first-child{grid-column:1/-1;}}
 @media(max-width:1100px){.nd-row.r21{grid-template-columns:1fr;}.nd-insights{grid-template-columns:1fr;}}
@@ -1014,6 +1068,24 @@ button.nd-kpi:hover{box-shadow:0 8px 20px -12px rgba(10,27,74,.35),0 0 0 1px var
         <button class="nav-tab" data-tab="convcompare" onclick="showTab('convcompare',this)">Digital vs BTL Conversion</button>
         <button class="nav-tab" data-tab="geo" onclick="showTab('geo',this)">Geography</button>
       </div>
+      <div class="camp-filter" id="campFilter">
+        <button type="button" class="camp-btn" id="campBtn" onclick="campToggle()" aria-haspopup="dialog" aria-expanded="false" title="Filter every tab by Primary Registration Campaign">
+          <span class="camp-lbl">Primary Registration Campaign</span><span class="camp-lbl-s">Campaign</span>
+          <b id="campVal">All campaigns</b><span class="camp-n" id="campN" hidden></span>
+        </button>
+        <button type="button" class="camp-x" onclick="campClear()" title="Clear the campaign filter" aria-label="Clear the campaign filter">×</button>
+        <div class="camp-pop" id="campPop" role="dialog" aria-label="Filter by Primary Registration Campaign">
+          <div class="camp-pop-h"><b>Primary Registration Campaign</b><span id="campPopCount"></span></div>
+          <input type="search" class="nd-input" id="campSearch" placeholder="Find a campaign" oninput="campFilterList(this.value)" autocomplete="off">
+          <div class="camp-quick" id="campQuick"></div>
+          <div class="camp-list" id="campList"></div>
+          <div class="camp-foot">
+            <button type="button" class="nd-btn sm" onclick="campClearPending()">Clear</button>
+            <span id="campPendingInfo"></span>
+            <button type="button" class="nd-btn sm primary" onclick="campCommit()">Apply to all tabs</button>
+          </div>
+        </div>
+      </div>
     </nav>
   </header>
 
@@ -1032,8 +1104,6 @@ button.nd-kpi:hover{box-shadow:0 8px 20px -12px rgba(10,27,74,.35),0 0 0 1px var
         <div class="nd-actions">
           <span class="nd-status busy" id="nd-status"><i></i><span id="nd-status-text">Connecting to the sheet…</span></span>
           <button class="nd-btn" onclick="NMD.load(true)">Refresh data</button>
-          <button class="nd-btn" onclick="NMD.exportLeads()">Export leads</button>
-          <button class="nd-btn" onclick="window.print()">Print</button>
         </div>
       </div>
 
@@ -1069,6 +1139,7 @@ button.nd-kpi:hover{box-shadow:0 8px 20px -12px rgba(10,27,74,.35),0 0 0 1px var
           <span class="nd-flabel">Refine</span>
           <div class="nd-ms" id="nd-ms-owner"></div>
           <div class="nd-ms" id="nd-ms-stage"></div>
+          <div class="nd-ms" id="nd-ms-camp"></div>
           <input type="search" class="nd-input nd-search" id="nd-q" placeholder="Search name, owner, stage or substage" oninput="NMD.setQuery(this.value)">
           <label class="nd-toggle" title="Show the change against the period of equal length just before the selected one"><input type="checkbox" id="nd-compare" checked onchange="NMD.setCompare(this.checked)">Compare with previous period</label>
           <button class="nd-btn" style="margin-left:auto;" onclick="NMD.reset()">Reset filters</button>
@@ -1193,7 +1264,6 @@ button.nd-kpi:hover{box-shadow:0 8px 20px -12px rgba(10,27,74,.35),0 0 0 1px var
         <div class="panel" id="nd-rec-panel">
           <div class="panel-header">
             <div><div class="panel-title">Lead records</div><div class="panel-sub" id="nd-rec-sub">Every lead behind the numbers above, newest first.</div></div>
-            <div class="nd-tools"><button class="nd-btn sm" onclick="NMD.exportLeads()">Export CSV</button></div>
           </div>
           <div class="nd-scroll" id="nd-rec"></div>
           <div class="nd-pager" id="nd-pager"></div>
@@ -2674,7 +2744,9 @@ const GSHEETS_BASE_URL = atob(_GS);
 let _lastFetchedAt = null;
 
 let charts = {};
-let rawRows = [];
+let rawRows = [];       // campaign-filtered rows that every tab reads
+let allRows = [];       // the whole sheet
+let _keepDateFilters = false;
 let activeOwner = 'all';
 let activeHotSub = 'all';
 let activeWarmSub = 'all';
@@ -2738,7 +2810,9 @@ function applyCsvText(csvText, when, state) {
   Object.values(charts).forEach(c => { try { c.destroy(); } catch(e){} });
   charts = {};
   const keepOwner = activeOwner;
-  rawRows = rows; _shownCsv = csvText; _lastFetchedAt = when;
+  allRows = rows; _shownCsv = csvText; _lastFetchedAt = when;
+  campBuildList(); rawRows = campRows(); campRenderButton();
+  _disciplineRows = [];
   activeOwner = 'all'; activeHotSub = 'all'; activeWarmSub = 'all';
   buildOwnerFilter();
   // Keep the selected lead owner through a background refresh when they still exist
@@ -2754,7 +2828,7 @@ function applyCsvText(csvText, when, state) {
   const m = calculateMetrics(getFilteredRows());
   globalMetrics = m;
   renderDashboard(m, 'Google Sheets (Live)');
-  setFilePill(state === 'stale' ? `Saved copy · ${_stamp(when)} · updating…` : `Live · ${rawRows.length.toLocaleString()} rows · ${_stamp(when)}`, state);
+  setFilePill(state === 'stale' ? `Saved copy · ${_stamp(when)} · updating…` : `Live · ${allRows.length.toLocaleString()} rows · ${_stamp(when)}`, state);
 
   // Re-draw whichever page is open (pages other than the overview render on demand)
   const active = document.querySelector('.tab-content.active');
@@ -2767,7 +2841,7 @@ function applyCsvText(csvText, when, state) {
 
 async function fetchGoogleSheetsCsv(opts) {
   opts = opts || {};
-  const first = rawRows.length === 0;
+  const first = allRows.length === 0;
   if (first) {
     document.getElementById('uploadScreen').style.display = 'flex';
     document.getElementById('dashboardScreen').style.display = 'none';
@@ -2788,7 +2862,7 @@ async function fetchGoogleSheetsCsv(opts) {
   // 1) Instant paint from the saved copy (repeat visits)
   if (first && USE_LOCAL_CACHE) {
     const c = await DashCache.get('crm-csv');
-    if (c && c.text && rawRows.length === 0) {
+    if (c && c.text && allRows.length === 0) {
       try { applyCsvText(c.text, new Date(c.at), 'stale'); _kickNonMit(); } catch (e) {}
     }
   }
@@ -2800,14 +2874,14 @@ async function fetchGoogleSheetsCsv(opts) {
     const now = new Date();
     if (csvText === _shownCsv) {
       _lastFetchedAt = now;                       // nothing changed: just confirm it is live
-      setFilePill(`Live · ${rawRows.length.toLocaleString()} rows · ${_stamp(now)}`, '');
+      setFilePill(`Live · ${allRows.length.toLocaleString()} rows · ${_stamp(now)}`, '');
     } else {
-      _quietRender = !first || rawRows.length > 0;
+      _quietRender = !first || allRows.length > 0;
       try { applyCsvText(csvText, now, ''); } finally { _quietRender = false; }
     }
     if (USE_LOCAL_CACHE) DashCache.set('crm-csv', { text: csvText, at: now.getTime() });
   } catch (err) {
-    if (rawRows.length > 0) {
+    if (allRows.length > 0) {
       // Keep working from what is on screen and say so plainly
       setFilePill(`Offline · saved copy from ${_stamp(_lastFetchedAt || new Date())}`, 'offline');
     } else {
@@ -2826,7 +2900,7 @@ async function fetchGoogleSheetsCsv(opts) {
 
 // Refresh keeps the dashboard on screen and swaps the data in when it arrives.
 function reloadFile() {
-  if (rawRows.length === 0) { fetchGoogleSheetsCsv(); return; }
+  if (allRows.length === 0) { fetchGoogleSheetsCsv(); return; }
   fetchGoogleSheetsCsv({ manual: true });
   try { NMD.load(true); } catch (e) {}
 }
@@ -3814,8 +3888,8 @@ function renderDashboard(m, filename) {
 
   { const ofb = document.getElementById('ownerFilterBar'); if (ofb) ofb.style.display = 'flex'; }
   updateOwnerCountLabel();
-  // Reset all date filters to "All Time" on every fresh load
-  gdfResetAll();
+  // Reset all date filters to "All Time" on every fresh load (kept when only the campaign filter changes)
+  if (!_keepDateFilters) gdfResetAll();
 
   renderVerdictStrip(m);
   renderKPIs(m, instTotal);
@@ -7556,7 +7630,8 @@ function renderMktAgentWise(rows) {
 // ── MAIN RENDER ──
 function renderMarketingTab() {
   if (!globalMetrics) return;
-  const allRowsRaw = globalMetrics.rows || [];
+  // Start from every lead in the campaign filter; this tab applies its own date filter
+  const allRowsRaw = getFilteredRows();
   // Apply date filter first (same format as Funnel Overview)
   const allRows    = mktDateFilterRows(allRowsRaw);
   const periodRows = mktPeriodRows(allRows);
@@ -7609,7 +7684,7 @@ function renderMarketingTab() {
 // ══════════════════════════════════════════════════════
 function renderConvCompareTab() {
   if (!globalMetrics) return;
-  const allRows = globalMetrics.rows || [];
+  const allRows = getFilteredRows();   // every lead in the campaign filter
   const digRows = allRows.filter(r => mktGroup(r) === 'digital');
   const btlRows = allRows.filter(r => mktGroup(r) === 'btl');
 
@@ -8929,6 +9004,172 @@ function nmRenderChannelTable(rows) {
 
 
 // ══════════════════════════════════════════════════════════════════════════
+// PRIMARY REGISTRATION CAMPAIGN FILTER (header, applies to every tab)
+// allRows keeps the whole sheet; rawRows is the campaign-filtered view that
+// every tab already reads, so one switch here re-scopes the whole dashboard.
+// The Non MIT Leads Data tab reads its own sheet and has its own Campaign filter.
+// ══════════════════════════════════════════════════════════════════════════
+const NOT_SET = '(Not set)';
+const _campKeyCache = new WeakMap();
+function campKey(r) {
+  let k = _campKeyCache.get(r);
+  if (k === undefined) { k = mktNorm(mktCampRaw(r)) || '\u0000'; _campKeyCache.set(r, k); }
+  return k;
+}
+const camp = { sel: new Set(), pending: null, list: [], byKey: {} };
+
+function campRows(rows) {
+  rows = rows || allRows;
+  return camp.sel.size ? rows.filter(r => camp.sel.has(campKey(r))) : rows;
+}
+// One entry per campaign: display label, lead count, main channel, Non-MIT flag.
+function campBuildList() {
+  const M = {};
+  for (const r of allRows) {
+    const k = campKey(r);
+    let e = M[k];
+    if (!e) e = M[k] = { k, n: 0, names: {}, groups: {}, nm: k !== '\u0000' && NOTMIT_CAMPAIGNS.has(k) };
+    e.n++;
+    const raw = String(mktCampRaw(r) || '').trim();
+    if (raw) e.names[raw] = (e.names[raw] || 0) + 1;
+    const g = mktGroup(r); e.groups[g] = (e.groups[g] || 0) + 1;
+  }
+  camp.list = Object.values(M).map(e => {
+    const top = (o) => Object.entries(o).sort((a, b) => b[1] - a[1])[0];
+    return { k: e.k, n: e.n, nm: e.nm, label: e.k === '\u0000' ? NOT_SET : (top(e.names) || [e.k])[0], g: (top(e.groups) || ['other'])[0] };
+  }).sort((a, b) => b.n - a.n || a.label.localeCompare(b.label));
+  camp.byKey = Object.fromEntries(camp.list.map(e => [e.k, e]));
+  // Drop selections that no longer exist after a refresh
+  camp.sel = new Set([...camp.sel].filter(k => camp.byKey[k]));
+}
+function campCount(set) { let n = 0; set.forEach(k => { n += (camp.byKey[k] || { n: 0 }).n; }); return n; }
+
+function campRenderButton() {
+  const wrap = document.getElementById('campFilter'); if (!wrap) return;
+  const v = document.getElementById('campVal'), c = document.getElementById('campN'), s = camp.sel;
+  wrap.classList.toggle('on', s.size > 0);
+  if (!s.size) { v.textContent = 'All campaigns'; c.hidden = true; }
+  else {
+    v.textContent = s.size === 1 ? camp.byKey[[...s][0]].label : `${s.size} campaigns`;
+    c.hidden = false; c.textContent = `${campCount(s).toLocaleString()} of ${allRows.length.toLocaleString()} leads`;
+  }
+  v.title = s.size ? [...s].map(k => camp.byKey[k].label).join('\n') : '';
+}
+
+const _esc = v => String(v ?? '').replace(/[&<>"']/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]));
+function campRenderList() {
+  const p = camp.pending, list = document.getElementById('campList');
+  const GL = { digital: 'Digital', btl: 'BTL', other: 'Other' };
+  list.innerHTML = camp.list.map((e, i) => `<label data-q="${_esc(e.label.toLowerCase())}" class="${p.has(e.k) ? 'chk' : ''}"><input type="checkbox" data-i="${i}" ${p.has(e.k) ? 'checked' : ''}><span title="${_esc(e.label)}">${_esc(e.label)}</span><i class="g-${e.g}">${GL[e.g] || 'Other'}</i><em>${e.n.toLocaleString()}</em></label>`).join('')
+    || '<div class="camp-empty">No campaigns in the data yet.</div>';
+  const q = document.getElementById('campSearch'); if (q && q.value) campFilterList(q.value);
+  campRenderPending();
+}
+function campRenderQuick() {
+  const sum = f => camp.list.filter(f);
+  const btn = (id, label, items) => items.length ? `<button type="button" onclick="campQuick('${id}')">${label}<em>${items.length}</em></button>` : '';
+  document.getElementById('campQuick').innerHTML = '<span>Quick pick</span>'
+    + btn('digital', 'All digital', sum(e => e.g === 'digital'))
+    + btn('btl', 'All BTL', sum(e => e.g === 'btl'))
+    + btn('other', 'All other', sum(e => e.g === 'other'))
+    + btn('nm', 'Non-MIT campaigns', sum(e => e.nm))
+    + '<button type="button" onclick="campQuick(\'shown\')" id="campShownBtn" hidden>Select shown</button>';
+}
+function campRenderPending() {
+  const el = document.getElementById('campPendingInfo'), p = camp.pending;
+  el.innerHTML = p.size ? `<b>${p.size}</b> selected · <b>${campCount(p).toLocaleString()}</b> leads` : 'No filter · all leads';
+  document.getElementById('campPopCount').textContent = `${camp.list.length.toLocaleString()} campaigns · ${allRows.length.toLocaleString()} leads`;
+}
+function campFilterList(v) {
+  v = String(v || '').trim().toLowerCase();
+  document.querySelectorAll('#campList label').forEach(l => { l.style.display = !v || l.dataset.q.includes(v) ? '' : 'none'; });
+  const b = document.getElementById('campShownBtn'); if (b) b.hidden = !v;
+}
+function campQuick(kind) {
+  let keys;
+  if (kind === 'shown') keys = [...document.querySelectorAll('#campList label')].filter(l => l.style.display !== 'none').map(l => camp.list[+l.querySelector('input').dataset.i].k);
+  else keys = camp.list.filter(e => kind === 'nm' ? e.nm : e.g === kind).map(e => e.k);
+  camp.pending = new Set(keys);
+  campRenderList();
+}
+function campToggle(force) {
+  const wrap = document.getElementById('campFilter');
+  const open = force !== undefined ? force : !wrap.classList.contains('open');
+  if (open) {
+    if (!camp.list.length && allRows.length) campBuildList();
+    camp.pending = new Set(camp.sel);
+    document.getElementById('campSearch').value = '';
+    campRenderQuick(); campRenderList();
+    wrap.classList.add('open');
+    document.getElementById('campBtn').setAttribute('aria-expanded', 'true');
+    setTimeout(() => document.getElementById('campSearch').focus(), 0);
+  } else {
+    wrap.classList.remove('open');
+    document.getElementById('campBtn').setAttribute('aria-expanded', 'false');
+  }
+}
+function campClearPending() { camp.pending = new Set(); campRenderList(); }
+function campCommit() {
+  const p = camp.pending || camp.sel;
+  campToggle(false);
+  const same = p.size === camp.sel.size && [...p].every(k => camp.sel.has(k));
+  if (!same) campApply(p);
+}
+function campClear() { campApply(new Set()); }
+
+// Re-scope the whole dashboard to the chosen campaigns, keeping date filters and the open page.
+function campApply(set) {
+  camp.sel = new Set(set);
+  campRenderButton();
+  if (!allRows.length) return;
+  const pill = document.getElementById('navFilename'), pillText = pill ? pill.textContent : '';
+  rawRows = campRows();
+  Object.values(charts).forEach(c => { try { c.destroy(); } catch (e) {} });
+  charts = {};
+  activeHotSub = 'all'; activeWarmSub = 'all';
+  _disciplineRows = [];
+  const m = calculateMetrics(getFilteredRows());
+  globalMetrics = m;
+  _keepDateFilters = true;
+  try { renderDashboard(m, pillText); } finally { _keepDateFilters = false; }
+  if (pill) pill.textContent = pillText;
+
+  const active = document.querySelector('.tab-content.active');
+  const id = active ? active.id.replace('tab-', '') : 'overview';
+  const pillOf = t => document.querySelector(`#gdf-${t} .gdf-pill.active`);
+  const dated = t => gdfState[t] && gdfState[t].preset !== 'all' && document.getElementById('gdf-' + t);
+  _quietRender = true;
+  try {
+    if (id !== 'overview' && dated('overview')) { gdfApply('overview', gdfState.overview.preset, pillOf('overview')); globalMetrics = m; }
+    ['overview', 'hot', 'warm', 'sla', 'lost', 'geo', 'dailyleads', 'discipline', 'agentperf', 'prospect'].forEach(t => {
+      if (t !== id && document.getElementById('gdf-' + t)) gdfUpdateUI(t, pillOf(t));
+    });
+    if (dated(id)) gdfApply(id, gdfState[id].preset, pillOf(id));
+    else if (id !== 'overview') showTab(id, document.querySelector('.nav-tab.active'));
+  } finally { _quietRender = false; }
+}
+
+document.addEventListener('click', e => {
+  const wrap = document.getElementById('campFilter');
+  if (!wrap) return;
+  const cb = e.target.closest && e.target.closest('#campList input[type=checkbox]');
+  if (cb) {
+    const k = camp.list[+cb.dataset.i].k;
+    cb.checked ? camp.pending.add(k) : camp.pending.delete(k);
+    cb.closest('label').classList.toggle('chk', cb.checked);
+    campRenderPending();
+    return;
+  }
+  if (wrap.classList.contains('open') && !wrap.contains(e.target)) campCommit();
+});
+document.addEventListener('keydown', e => {
+  const wrap = document.getElementById('campFilter');
+  if (!wrap || !wrap.classList.contains('open')) return;
+  if (e.key === 'Escape') { campToggle(false); document.getElementById('campBtn').focus(); }
+  if (e.key === 'Enter' && e.target && e.target.id === 'campSearch') campCommit();
+});
+
+// ══════════════════════════════════════════════════════════════════════════
 // SITE VISIT OUTCOMES — shared by Marketing, Non-MIT Leads Analysis and
 // Non MIT Leads Data.
 //
@@ -9099,7 +9340,7 @@ const NMD = (() => {
   const map = { btl: {}, nik: {} };
   const S = {
     tab: 'btl', preset: 'all', from: null, to: null,
-    owners: new Set(), stages: new Set(), q: '', compare: true,
+    owners: new Set(), stages: new Set(), camps: new Set(), q: '', compare: true,
     gran: 'auto', pvGran: 'week', sort: { k: 'n', dir: -1 }, page: 1,
     loaded: false, loading: false, error: '', fetchedAt: null,
   };
@@ -9200,7 +9441,8 @@ const NMD = (() => {
     let n = f(/^(registered|student|lead|full|candidate|customer)?\s*name$/i);
     if (n < 0) n = h.findIndex((x, i) => /name/i.test(x) && !/owner|campaign|publisher|source|form|college|school|parent|father|mother|user ?name|course|program/i.test(x) && i !== o);
     const fs = f(/first.*(lead)?.*stage/i), ps = f(/prev.*(lead)?.*stage/i);
-    map[k] = { o, s, u, d, n, fs, ps };
+    let cp = f(/primary.*registration.*campaign/i); if (cp < 0) cp = f(/campaign/i);
+    map[k] = { o, s, u, d, n, fs, ps, cp };
   }
 
   function classify(s) {
@@ -9220,6 +9462,7 @@ const NMD = (() => {
       const rec = {
         o: clean(g(r, m.o)).replace(/\s*\([^)]*@[^)]*\)/, '') || 'Unassigned',
         s, u, d: d ? day0(d) : null, src: k, n: clean(g(r, m.n)),
+        cp: m.cp >= 0 ? (clean(g(r, m.cp)) || 'Not set') : '',
         c: classify(s),                                              // one stage group per lead (charts)
         p: /payment/i.test(s),                                       // converted to payment
         nr: /not.?respond|no.?response/i.test(s + ' ' + u),          // stage or substage says not responding
@@ -9331,8 +9574,8 @@ const NMD = (() => {
   }
   function refine(a, skipStage) {
     const q = S.q.trim().toLowerCase();
-    if (!S.owners.size && (skipStage || !S.stages.size) && !q) return a;
-    return a.filter(x => (!S.owners.size || S.owners.has(x.o)) && (skipStage || !S.stages.size || S.stages.has(x.s)) && (!q || (x.n + ' ' + x.o + ' ' + x.s + ' ' + x.u).toLowerCase().includes(q)));
+    if (!S.owners.size && !S.camps.size && (skipStage || !S.stages.size) && !q) return a;
+    return a.filter(x => (!S.owners.size || S.owners.has(x.o)) && (!S.camps.size || S.camps.has(x.cp)) && (skipStage || !S.stages.size || S.stages.has(x.s)) && (!q || (x.n + ' ' + x.o + ' ' + x.s + ' ' + x.u + ' ' + x.cp).toLowerCase().includes(q)));
   }
 
   function setTab(t) {
@@ -9341,6 +9584,7 @@ const NMD = (() => {
     const owners = new Set(all.map(x => x.o)), stages = new Set(all.map(x => x.s));
     S.owners = new Set([...S.owners].filter(x => owners.has(x)));
     S.stages = new Set([...S.stages].filter(x => stages.has(x)));
+    const camps = new Set(all.map(x => x.cp)); S.camps = new Set([...S.camps].filter(x => camps.has(x)));
     render();
   }
   function setPreset(p) {
@@ -9363,13 +9607,13 @@ const NMD = (() => {
   function sortBy(k) { S.sort = { k, dir: S.sort.k === k ? -S.sort.dir : (k === 'o' ? 1 : -1) }; render(); }
   function setPage(p) { S.page = p; render(); const el = $('nd-rec-panel'); if (el) el.scrollIntoView({ block: 'nearest' }); }
   function reset() {
-    S.preset = 'all'; S.from = S.to = null; S.owners.clear(); S.stages.clear(); S.q = ''; S.page = 1;
+    S.preset = 'all'; S.from = S.to = null; S.owners.clear(); S.stages.clear(); S.camps.clear(); S.q = ''; S.page = 1;
     $('nd-q').value = '';
     document.querySelectorAll('#tab-nmdata .nd-ms.open').forEach(e => e.classList.remove('open'));
     render();
   }
   function toggleStage(s) { S.stages.has(s) ? S.stages.delete(s) : S.stages.add(s); S.page = 1; render(); }
-  function removeChip(kind, i) { const set = kind === 'o' ? S.owners : S.stages; const v = [...set][i]; set.delete(v); S.page = 1; render(); }
+  function removeChip(kind, i) { const set = kind === 'o' ? S.owners : kind === 'c' ? S.camps : S.stages; const v = [...set][i]; set.delete(v); S.page = 1; render(); }
   // KPI cards filter by a whole stage group (every stage name that starts with "Hot", and so on).
   function pickGroup(g) {
     if (g === 'all') { S.stages.clear(); }
@@ -9593,6 +9837,7 @@ const NMD = (() => {
     const ks = S.tab === 'all' ? ['btl', 'nik'] : [S.tab];
     const dims = [{ k: 'owner', l: 'Lead owner', head: 'Lead owner', fn: x => x.o }];
     if (S.tab === 'all') dims.push({ k: 'src', l: 'Offline vs digital', head: 'Source', fn: x => SRC[x.src] });
+    if (ks.some(k => map[k].cp >= 0)) dims.push({ k: 'camp', l: 'Campaign', head: 'Primary registration campaign', fn: x => x.cp || 'Not in this sheet' });
     dims.push({ k: 'month', l: 'Month', head: 'Registration month', fn: x => x.d ? mlab(mk(x.d)) : 'No date', ord: x => x.d ? mk(x.d) : '' });
     VisitFunnel.render('vf-nmd', { items: a, cols: { prev: ks.some(k => map[k].ps >= 0), first: ks.some(k => map[k].fs >= 0) } }, {
       scope: 'Follows the source, date range and filters above.',
@@ -9685,9 +9930,9 @@ const NMD = (() => {
   function records(a) {
     const rows = a.slice().sort((x, y) => (y.d ? +y.d : -1) - (x.d ? +x.d : -1));
     const pages = Math.max(1, Math.ceil(rows.length / PAGE)); if (S.page > pages) S.page = pages;
-    const part = rows.slice((S.page - 1) * PAGE, S.page * PAGE), hasName = rows.some(x => x.n), t = today();
+    const part = rows.slice((S.page - 1) * PAGE, S.page * PAGE), hasName = rows.some(x => x.n), hasCp = rows.some(x => x.cp), t = today();
     $('nd-rec-sub').textContent = `${num(rows.length)} leads behind the numbers above, newest first.`;
-    $('nd-rec').innerHTML = rows.length ? `<table class="nd-table"><thead><tr><th>Registered</th>${hasName ? '<th class="tl">Name</th>' : ''}<th class="tl">Lead owner</th><th class="tl">Stage</th><th class="tl">Substage</th><th class="tl">Source</th><th>Age</th></tr></thead><tbody>${part.map(x => `<tr><td>${x.d ? dlab(x.d) : '<span style="color:var(--dim);font-weight:500">No date</span>'}</td>${hasName ? `<td class="tl">${esc(x.n) || '–'}</td>` : ''}<td class="tl">${esc(x.o)}</td><td class="tl"><span class="nd-tag ${TAG[x.c]}">${esc(x.s)}</span></td><td class="tl">${esc(x.u) || '<span style="color:#c3cad6">–</span>'}</td><td class="tl">${SRC[x.src]}</td><td>${x.d ? Math.max(0, days(x.d, t)) + ' d' : '–'}</td></tr>`).join('')}</tbody></table>` : noData;
+    $('nd-rec').innerHTML = rows.length ? `<table class="nd-table"><thead><tr><th>Registered</th>${hasName ? '<th class="tl">Name</th>' : ''}<th class="tl">Lead owner</th><th class="tl">Stage</th><th class="tl">Substage</th><th class="tl">Source</th>${hasCp ? '<th class="tl">Campaign</th>' : ''}<th>Age</th></tr></thead><tbody>${part.map(x => `<tr><td>${x.d ? dlab(x.d) : '<span style="color:var(--dim);font-weight:500">No date</span>'}</td>${hasName ? `<td class="tl">${esc(x.n) || '–'}</td>` : ''}<td class="tl">${esc(x.o)}</td><td class="tl"><span class="nd-tag ${TAG[x.c]}">${esc(x.s)}</span></td><td class="tl">${esc(x.u) || '<span style="color:#c3cad6">–</span>'}</td><td class="tl">${SRC[x.src]}</td>${hasCp ? `<td class="tl">${esc(x.cp) || '–'}</td>` : ''}<td>${x.d ? Math.max(0, days(x.d, t)) + ' d' : '–'}</td></tr>`).join('')}</tbody></table>` : noData;
     $('nd-pager').innerHTML = rows.length ? `<span>Showing ${num((S.page - 1) * PAGE + 1)} to ${num(Math.min(S.page * PAGE, rows.length))} of ${num(rows.length)}</span><span class="nd-tools"><button class="nd-btn sm" ${S.page <= 1 ? 'disabled style="opacity:.4;cursor:default"' : ''} onclick="NMD.setPage(${S.page - 1})">Previous</button><span>Page ${S.page} of ${num(pages)}</span><button class="nd-btn sm" ${S.page >= pages ? 'disabled style="opacity:.4;cursor:default"' : ''} onclick="NMD.setPage(${S.page + 1})">Next</button></span>` : '';
   }
 
@@ -9696,7 +9941,7 @@ const NMD = (() => {
     let h = '';
     for (const k of ['btl', 'nik']) {
       const hs = raw[k].h; if (!hs.length) continue;
-      for (const [f, l] of [['o', 'Lead owner'], ['s', 'Lead stage'], ['u', 'Lead substage'], ['ps', 'Previous lead stage'], ['fs', 'First lead stage'], ['d', 'Registration date'], ['n', 'Lead name']])
+      for (const [f, l] of [['o', 'Lead owner'], ['s', 'Lead stage'], ['u', 'Lead substage'], ['ps', 'Previous lead stage'], ['fs', 'First lead stage'], ['cp', 'Primary registration campaign'], ['d', 'Registration date'], ['n', 'Lead name']])
         h += `<label>${SRC[k]} · ${l}<select class="nd-select" onchange="NMD.setMap('${k}','${f}',this.value)"><option value="-1">Not used</option>${hs.map((x, i) => `<option value="${i}"${map[k][f] === i ? ' selected' : ''}>${esc(x || 'Column ' + (i + 1))}</option>`).join('')}</select></label>`;
     }
     h += `<label>Date cells in the sheet<select class="nd-select" onchange="NMD.setSwap(this.value)"><option value="1"${SWAP ? ' selected' : ''}>Day and month were swapped by Sheets (fix them)</option><option value="0"${SWAP ? '' : ' selected'}>Already correct</option></select></label>`;
@@ -9725,11 +9970,7 @@ const NMD = (() => {
     const t = $(id) && $(id).querySelector('table'); if (!t) return;
     download(name, [...t.rows].map(r => [...r.cells].map(c => c.textContent.replace(/[▲▼]/g, '').trim().replace(/^–$/, '0'))));
   }
-  function exportLeads() {
-    if (!lastFiltered.length) return;
-    const rows = lastFiltered.slice().sort((x, y) => (y.d ? +y.d : -1) - (x.d ? +x.d : -1));
-    download('leads', [['Source', 'Registration date', 'Name', 'Lead owner', 'Lead stage', 'Lead substage', 'Previous lead stage', 'First lead stage', 'Stage group', 'Payment', 'Had site visit']].concat(rows.map(x => [SRC[x.src], x.d ? dk(x.d) : '', x.n, x.o, x.s, x.u, x.prev, x.first, CLS_LABEL[x.c], x.p ? 'Yes' : 'No', x.vis ? 'Yes' : 'No'])));
-  }
+
 
   // ── filter bar sync ────────────────────────────────────────────────────
   function syncFilters(all, ref, a, r, pr) {
@@ -9745,9 +9986,14 @@ const NMD = (() => {
     msRender('nd-ms-stage', 'Stage', ranked(all, x => x.s).map(x => x[0]), S.stages, countBy(all, x => x.s));
 
     const ks = S.tab === 'all' ? ['btl', 'nik'] : [S.tab], dated = all.filter(x => x.d);
+    // Campaign filter: needs a Primary Registration Campaign column in this sheet
+    const cpCols = ks.filter(k => map[k].cp >= 0);
+    if (cpCols.length) msRender('nd-ms-camp', 'Campaign', ranked(all.filter(x => x.cp), x => x.cp).map(x => x[0]), S.camps, countBy(all, x => x.cp));
+    else { const el = $('nd-ms-camp'); msVals['nd-ms-camp'] = null; el.classList.remove('open'); el.innerHTML = '<button type="button" disabled title="This sheet has no Primary Registration Campaign column. Pick the column under Column settings if it has another name.">Campaign: not in this sheet</button>'; }
     let mn = Infinity, mx = -Infinity; for (const x of dated) { const t = +x.d; if (t < mn) mn = t; if (t > mx) mx = t; }
     const chips = [...S.owners].map((o, i) => `<span class="nd-chip">${esc(o)}<button type="button" aria-label="Remove ${esc(o)}" onclick="NMD.removeChip('o',${i})">×</button></span>`)
-      .concat([...S.stages].map((s, i) => `<span class="nd-chip">${esc(s)}<button type="button" aria-label="Remove ${esc(s)}" onclick="NMD.removeChip('s',${i})">×</button></span>`)).join('');
+      .concat([...S.stages].map((s, i) => `<span class="nd-chip">${esc(s)}<button type="button" aria-label="Remove ${esc(s)}" onclick="NMD.removeChip('s',${i})">×</button></span>`))
+      .concat([...S.camps].map((c, i) => `<span class="nd-chip">Campaign: ${esc(c)}<button type="button" aria-label="Remove ${esc(c)}" onclick="NMD.removeChip('c',${i})">×</button></span>`)).join('');
     $('nd-fsum').innerHTML = `<span>Showing <b>${num(a.length)}</b> of ${num(all.length)} leads</span><span><b>${esc(rangeLabel(r))}</b></span>`
       + (S.compare ? (pr ? `<span>Compared with ${esc(rangeLabel(pr))}</span>` : '<span>Pick a date range to compare with the period before it</span>') : '')
       + `<span>Date column: ${esc(ks.map(k => raw[k].h[map[k].d] || 'not found').join(' / '))}${dated.length ? ` · data from ${dlab(new Date(mn))} to ${dlab(new Date(mx))}` : ''}</span>`
@@ -9788,7 +10034,7 @@ const NMD = (() => {
   function show() { if (!S.loaded && !S.loading) load(); render(); }
 
   return { load, show, render, setTab, setPreset, setCustom, setMonth, setQuery, setCompare, setGran, setPvGran, sortBy, setPage, reset, pickGroup, removeChip,
-    msToggle, msFilter, msPick, msClear, setMap, setSwap, setLbl, exportTable, exportLeads, _state: S, _raw: raw, _setData: setData };
+    msToggle, msFilter, msPick, msClear, setMap, setSwap, setLbl, exportTable, _state: S, _raw: raw, _setData: setData };
 })();
 
 // The Non-MIT sheet starts loading right after the main dashboard is on screen (see _kickNonMit).
